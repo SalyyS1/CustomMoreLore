@@ -1,0 +1,42 @@
+version: 1
+policies:
+  missing: hide
+  empty: hide
+  unknown: native
+  unsupported: native
+  invalid-inline-block: native
+  condition-unknown: hide
+
+aliases:
+  damage: attack-damage
+  speed: attack-speed
+
+profiles:
+  default:
+    priority: 0
+    native-lore: replace
+    layout:
+      - '<gray>⚔ #attack-damage# <dark_gray>| <aqua>#attack-speed#'
+      - '<yellow>✦ #critical-strike-chance#'
+      - '#abilities#'
+      - '#lore#'
+  types:
+    SWORD:
+      priority: 20
+      layout:
+        - '<gray>⚔ #attack-damage# <dark_gray>| <aqua>#attack-speed#'
+        - '<yellow>✦ #critical-strike-chance#'
+        - '#abilities#'
+        - '#lore#'
+  items:
+    SWORD:sunblade:
+      priority: 100
+      layout:
+        - '<gold>Sunblade'
+        - row:
+            parts:
+              - token: attack-damage
+                render: value
+              - token: attack-speed
+                render: value
+            join: ' <dark_gray>| '

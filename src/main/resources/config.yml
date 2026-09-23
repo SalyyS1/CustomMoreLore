@@ -1,0 +1,14 @@
+version: 1
+debug: false
+integration:
+  enabled: true
+  apply-custom-layouts: true
+  listener-priority: HIGHEST
+  preserve-native-on-unknown: true
+  capture:
+    enabled: false
+    allowlisted-stat-ids: []
+  async-repair:
+    enabled: true
+    max-items-per-second: 20
+profiles-file: formats.yml

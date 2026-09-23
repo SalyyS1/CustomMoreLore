@@ -1,0 +1,13 @@
+editor:
+  title: "CustomMoreLore: {profile}"
+  add-row: "Add row"
+  save: "Save"
+  preview: "Preview (unsaved)"
+  save-disabled: "Save disabled: fix validation errors first"
+  expired: "Editor session expired"
+  no-permission: "You do not have permission to edit layouts"
+  validation:
+    empty-profile: "Profile id cannot be empty"
+    empty-row: "Row cannot be empty"
+    unclosed-token: "Unclosed token marker"
+    block-inline: "Block tokens must occupy their own row"

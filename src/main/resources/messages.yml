@@ -1,0 +1,6 @@
+prefix: "<gray>[<aqua>CustomMoreLore</aqua>] "
+no-permission: "<red>You do not have permission.</red>"
+reload-success: "<green>Configuration reloaded.</green>"
+reload-failed: "<red>Configuration reload failed; active configuration was kept.</red>"
+validate-success: "<green>Configuration is valid.</green>"
+reformat-fallback: "<yellow>Native lore was kept because formatting was unavailable.</yellow>"

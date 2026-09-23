@@ -1,0 +1,10 @@
+permissions:
+  custommorelore.admin:
+    default: op
+    children:
+      custommorelore.reload: true
+      custommorelore.validate: true
+      custommorelore.debug: true
+      custommorelore.preview: true
+      custommorelore.reformat: true
+      custommorelore.editor: true

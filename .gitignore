@@ -1,0 +1,11 @@
+target/
+out/
+.idea/
+*.iml
+run/
+logs/
+.test-tmp/
+.env
+*.env
+*.key
+*.pem

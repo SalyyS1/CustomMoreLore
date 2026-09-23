@@ -1,0 +1,40 @@
+name: CustomMoreLore
+version: 0.1.0-SNAPSHOT
+main: vn.saly.custommorelore.CustomMoreLorePlugin
+api-version: '1.20'
+author: Salyyy
+description: Flexible MMOItems lore layouts with fail-soft native integration.
+softdepend:
+  - MMOItems
+  - MythicLib
+  - PlaceholderAPI
+commands:
+  cml:
+    description: Manage CustomMoreLore formats and diagnostics.
+    usage: /cml <reload|validate|debug|preview|editor|reformat>
+    permission: custommorelore.command
+permissions:
+  custommorelore.admin:
+    default: op
+    children:
+      custommorelore.command: true
+      custommorelore.reload: true
+      custommorelore.validate: true
+      custommorelore.debug: true
+      custommorelore.preview: true
+      custommorelore.reformat: true
+      custommorelore.editor: true
+  custommorelore.command:
+    default: op
+  custommorelore.reload:
+    default: op
+  custommorelore.validate:
+    default: op
+  custommorelore.debug:
+    default: op
+  custommorelore.preview:
+    default: op
+  custommorelore.reformat:
+    default: op
+  custommorelore.editor:
+    default: op
