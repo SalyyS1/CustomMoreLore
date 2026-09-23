@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CustomMoreLore — tài liệu cấu hình addon MMOItems cho Paper.">
+  <meta name="description" content="CustomMoreLore — configuration and operations guide for the Paper MMOItems addon.">
   <title>CustomMoreLore · Wiki</title>
   <style>
-    :root { --bg:#0b1117; --panel:#111b24; --panel-2:#162531; --line:#263948; --text:#e7f0f4; --muted:#9eb1bc; --cyan:#68e2e8; --gold:#f5c96a; --green:#91e6ad; --danger:#ff9d8e; --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+    :root { --bg:#0b1117; --panel:#111b24; --line:#263948; --text:#e7f0f4; --muted:#9eb1bc; --cyan:#68e2e8; --gold:#f5c96a; --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace; --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; } html { scroll-behavior:smooth; } body { margin:0; color:var(--text); background:radial-gradient(circle at 85% -10%,#1b3d47 0,transparent 34rem),var(--bg); font-family:var(--sans); line-height:1.65; }
     a { color:var(--cyan); text-decoration:none; } a:hover { text-decoration:underline; } .shell { display:grid; grid-template-columns:270px minmax(0,920px); gap:48px; width:min(1260px,calc(100% - 40px)); margin:auto; }
     aside { position:sticky; top:0; align-self:start; height:100vh; padding:42px 0 24px; border-right:1px solid var(--line); } .brand { display:flex; gap:12px; align-items:center; margin-bottom:34px; } .sigil { display:grid; place-items:center; width:38px; height:38px; color:#0b1117; background:linear-gradient(145deg,var(--cyan),var(--gold)); border-radius:11px; font-weight:900; } .brand strong { display:block; letter-spacing:.02em; } .brand small { color:var(--muted); } nav a { display:block; padding:8px 14px; color:var(--muted); border-left:2px solid transparent; } nav a:hover,nav a.active { color:var(--text); border-left-color:var(--cyan); background:#13212a; text-decoration:none; } .tip { margin-top:30px; padding:14px; color:var(--muted); border:1px solid var(--line); border-radius:12px; font-size:.86rem; }
@@ -19,28 +19,28 @@
   <div class="shell">
     <aside>
       <div class="brand"><div class="sigil">✦</div><div><strong>CustomMoreLore</strong><small>Wiki</small></div></div>
-      <nav aria-label="Mục lục">
-        <a href="#start">Bắt đầu</a><a href="#dsl">Layout DSL</a><a href="#profiles">Profiles</a><a href="#tokens">Tokens</a><a href="#commands">Lệnh</a><a href="#compatibility">Tương thích</a><a href="#troubleshooting">Xử lý lỗi</a>
+      <nav aria-label="Table of contents">
+        <a href="#start">Getting started</a><a href="#dsl">Layout DSL</a><a href="#profiles">Profiles</a><a href="#tokens">Tokens</a><a href="#commands">Commands</a><a href="#compatibility">Compatibility</a><a href="#troubleshooting">Troubleshooting</a>
       </nav>
-      <div class="tip">Addon Paper cho MMOItems. Lore được dựng từ dữ liệu MMOItems và giữ native fallback khi runtime không đủ capability.</div>
+      <div class="tip">A Paper addon for MMOItems. Lore is built from MMOItems data and falls back to native output whenever a runtime capability is unavailable.</div>
     </aside>
     <main>
       <section id="start">
         <div class="eyebrow">Paper addon · MMOItems</div>
-        <h1>Lore của item, theo đúng cách server của bạn muốn.</h1>
-        <p class="lead">CustomMoreLore cho phép ghép nhiều stat trên một dòng, tạo block lore riêng, ẩn separator khi thiếu stat và giữ nguyên dữ liệu gốc của MMOItems.</p>
-        <div class="hero-card"><strong>Layout đầu tiên</strong><pre><code>layout:
+        <h1>Item lore, arranged exactly the way your server needs.</h1>
+        <p class="lead">CustomMoreLore puts several stats on one line, creates dedicated lore blocks, removes separators when values are missing, and keeps MMOItems as the source of truth.</p>
+        <div class="hero-card"><strong>First layout</strong><pre><code>layout:
   - '&lt;gray&gt;⚔ #attack-damage# &lt;dark_gray&gt;| &lt;aqua&gt;#attack-speed#'
   - '&lt;yellow&gt;✦ #critical-strike-chance#'
   - '#abilities#'
   - '#lore#'</code></pre><div class="badges"><span class="badge">Paper 1.20.x</span><span class="badge">Paper 1.21.x</span><span class="badge">MythicLib</span><span class="badge">PlaceholderAPI</span></div></div>
-        <h2>1. Cài đặt</h2>
-        <ol><li>Đặt <code>CustomMoreLore.jar</code> vào thư mục <code>plugins/</code>.</li><li>Đảm bảo MMOItems và MythicLib đã được cài trên server. PlaceholderAPI là tùy chọn.</li><li>Khởi động server một lần để tạo <code>config.yml</code> và <code>formats.yml</code>.</li><li>Chỉnh <code>plugins/CustomMoreLore/formats.yml</code>, sau đó chạy <code>/cml reload</code>.</li></ol>
-        <div class="callout">Item không match profile hoặc gặp capability không được hỗ trợ sẽ giữ native lore. Plugin không sửa language file, template hay NBT của MMOItems.</div>
+        <h2>1. Installation</h2>
+        <ol><li>Put <code>CustomMoreLore.jar</code> in the server's <code>plugins/</code> directory.</li><li>Install MMOItems and MythicLib on the server. PlaceholderAPI is optional.</li><li>Start the server once to create <code>config.yml</code> and <code>formats.yml</code>.</li><li>Edit <code>plugins/CustomMoreLore/formats.yml</code>, then run <code>/cml reload</code>.</li></ol>
+        <div class="callout">Items without a matching profile, or with an unsupported capability, keep their native lore. The plugin does not modify MMOItems language files, templates, or NBT.</div>
       </section>
 
-      <section id="dsl"><h2>2. Layout DSL</h2><p>Mỗi phần tử trong <code>layout</code> là một dòng. Chuỗi thường giữ nguyên khoảng trắng; row và columns dùng khi cần tự bỏ phần tử thiếu.</p>
-        <div class="grid"><div class="card"><strong>Row có separator động</strong><pre><code>- row:
+      <section id="dsl"><h2>2. Layout DSL</h2><p>Each entry under <code>layout</code> becomes a line. Plain strings preserve their spacing; use rows and columns when missing values should remove their own separators.</p>
+        <div class="grid"><div class="card"><strong>Row with a dynamic separator</strong><pre><code>- row:
     parts:
       - text: '&lt;gray&gt;⚔ '
       - token: attack-damage
@@ -48,7 +48,7 @@
       - token: attack-speed
         render: value
     join: ' &lt;dark_gray&gt;| '
-    absent: remove-part</code></pre></div><div class="card"><strong>Columns gọn hơn</strong><pre><code>- columns:
+    absent: remove-part</code></pre></div><div class="card"><strong>Compact columns</strong><pre><code>- columns:
     - token: attack-damage
       render: fragment
       absent: remove
@@ -56,10 +56,10 @@
       render: value
       absent: remove
   gap: ' &lt;dark_gray&gt;| '</code></pre></div></div>
-        <h3>Render mode</h3><table><tr><th>Mode</th><th>Ý nghĩa</th></tr><tr><td><code>fragment</code></td><td>Dùng format, label, màu và locale do MMOItems cung cấp.</td></tr><tr><td><code>value</code></td><td>Dùng giá trị thô để tự định dạng trong layout.</td></tr><tr><td><code>block</code></td><td>Dành cho block nhiều dòng như abilities, elements, effects hoặc lore.</td></tr></table>
+        <h3>Render modes</h3><table><tr><th>Mode</th><th>Meaning</th></tr><tr><td><code>fragment</code></td><td>Keep MMOItems labels, formatting, colors, and locale.</td></tr><tr><td><code>value</code></td><td>Use the raw value so the layout can format it itself.</td></tr><tr><td><code>block</code></td><td>Use for multiline blocks such as abilities, elements, effects, or lore.</td></tr></table>
       </section>
 
-      <section id="profiles"><h2>3. Profile và thứ tự match</h2><p>Profile được compile thành snapshot immutable. Reload lỗi không thay thế snapshot đang chạy.</p><table><tr><th>Ưu tiên</th><th>Khai báo</th><th>Ví dụ</th></tr><tr><td>1</td><td>Item cụ thể</td><td><code>profiles.items.SWORD:sunblade</code></td></tr><tr><td>2</td><td>Loại item</td><td><code>profiles.types.SWORD</code></td></tr><tr><td>3</td><td>Mặc định</td><td><code>profiles.default</code></td></tr></table><pre><code>profiles:
+      <section id="profiles"><h2>3. Profiles and matching order</h2><p>Profiles are compiled into immutable snapshots. A failed reload never replaces the active snapshot.</p><table><tr><th>Priority</th><th>Declaration</th><th>Example</th></tr><tr><td>1</td><td>Specific item</td><td><code>profiles.items.SWORD:sunblade</code></td></tr><tr><td>2</td><td>Item type</td><td><code>profiles.types.SWORD</code></td></tr><tr><td>3</td><td>Default</td><td><code>profiles.default</code></td></tr></table><pre><code>profiles:
   default:
     layout: ['#lore#']
   types:
@@ -72,16 +72,16 @@
       priority: 100
       layout:
         - '&lt;gold&gt;Sunblade'
-        - '#attack-damage#'</code></pre><p class="muted"><code>extends</code> và <code>parent</code> đều được chấp nhận trong cùng bucket. Profile item có priority cao hơn sẽ thắng khi cùng bucket.</p></section>
+        - '#attack-damage#'</code></pre><p class="muted"><code>extends</code> and <code>parent</code> are both accepted within the same bucket. A higher-priority item profile wins when profiles share a bucket.</p></section>
 
-      <section id="tokens"><h2>4. Tokens và placeholder</h2><div class="grid"><div class="card"><strong>MMOItems</strong><p><code>#attack-damage#</code>, <code>#attack-speed:value#</code>, <code>#abilities#</code>, <code>#elements#</code>, <code>#effects#</code>, <code>#lore#</code>, <code>#native-lore#</code>.</p></div><div class="card"><strong>Placeholder</strong><p><code>%player_name%</code> cho PlaceholderAPI; <code>{player_name}</code> hoặc <code>[level]</code> cho MythicLib parser.</p></div></div><div class="callout warn">Placeholder phụ thuộc viewer chỉ dùng cho <code>/cml preview</code>. Không ghi output riêng của người chơi vào ItemStack dùng chung.</div></section>
+      <section id="tokens"><h2>4. Tokens and placeholders</h2><div class="grid"><div class="card"><strong>MMOItems</strong><p><code>#attack-damage#</code>, <code>#attack-speed:value#</code>, <code>#abilities#</code>, <code>#elements#</code>, <code>#effects#</code>, <code>#lore#</code>, <code>#native-lore#</code>.</p></div><div class="card"><strong>Placeholders</strong><p><code>%player_name%</code> for PlaceholderAPI; <code>{player_name}</code> or <code>[level]</code> for the MythicLib parser.</p></div></div><div class="callout warn">Viewer-dependent placeholders are available only for <code>/cml preview</code>. Viewer-specific output is never written to a shared ItemStack.</div></section>
 
-      <section id="commands"><h2>5. Lệnh và quyền</h2><table><tr><th>Lệnh</th><th>Tác dụng</th></tr><tr><td><code>/cml reload</code></td><td>Load, validate và activate snapshot mới.</td></tr><tr><td><code>/cml validate</code></td><td>Kiểm tra cấu hình hiện tại.</td></tr><tr><td><code>/cml debug item</code></td><td>Xem MMOItems identity, profile, capability và metrics.</td></tr><tr><td><code>/cml preview &lt;profile&gt;</code></td><td>Preview trong memory với viewer hiện tại.</td></tr><tr><td><code>/cml editor &lt;profile&gt;</code></td><td>Mở GUI draft, thêm row bằng chat, preview và save.</td></tr><tr><td><code>/cml reformat hand|inventory|player &lt;name&gt;</code></td><td>Ghi lại lore viewer-independent vào item.</td></tr></table><p>Quyền tổng: <code>custommorelore.admin</code>. Quyền riêng: <code>custommorelore.reload</code>, <code>validate</code>, <code>debug</code>, <code>preview</code>, <code>editor</code>, <code>reformat</code>.</p></section>
+      <section id="commands"><h2>5. Commands and permissions</h2><table><tr><th>Command</th><th>Purpose</th></tr><tr><td><code>/cml reload</code></td><td>Load, validate, and activate a new snapshot.</td></tr><tr><td><code>/cml validate</code></td><td>Validate the active configuration.</td></tr><tr><td><code>/cml debug item</code></td><td>Inspect MMOItems identity, profile, capabilities, and metrics.</td></tr><tr><td><code>/cml preview &lt;profile&gt;</code></td><td>Preview in memory for the current viewer.</td></tr><tr><td><code>/cml editor &lt;profile&gt;</code></td><td>Open the draft editor, add rows in chat, preview, and save.</td></tr><tr><td><code>/cml reformat hand|inventory|player &lt;name&gt;</code></td><td>Write viewer-independent lore back to items.</td></tr></table><p>The admin permission is <code>custommorelore.admin</code>. Individual permissions are <code>custommorelore.reload</code>, <code>validate</code>, <code>debug</code>, <code>preview</code>, <code>editor</code>, and <code>reformat</code>.</p></section>
 
-      <section id="compatibility"><h2>6. Tương thích</h2><ul><li>Compile trên API chung để chạy Paper 1.20.x và 1.21.x.</li><li>MMOItems và MythicLib là dependency do server cung cấp, không shade vào jar.</li><li>Hook lore MMOItems hiện là synchronous/deprecated; repair async là best-effort.</li><li>Tooltip item được giữ native nếu profile chưa bật chính sách replace rõ ràng.</li></ul></section>
+      <section id="compatibility"><h2>6. Compatibility</h2><ul><li>Built against a common API surface for Paper 1.20.x and 1.21.x.</li><li>MMOItems and MythicLib are server-provided dependencies and are not shaded into the jar.</li><li>The MMOItems lore hook is synchronous and deprecated; async repair is best-effort.</li><li>Tooltip items keep native output unless a profile explicitly enables replacement.</li></ul></section>
 
-      <section id="troubleshooting"><h2>7. Xử lý lỗi</h2><h3>Stats không hiện</h3><p>Chạy <code>/cml debug item</code>, kiểm tra item type/ID và chính tả stat ID. Dùng <code>render: fragment</code> nếu muốn format MMOItems.</p><h3>Separator bị dư</h3><p>Đổi từ chuỗi thường sang <code>row</code> hoặc <code>columns</code> với <code>absent: remove</code>.</p><h3>Reload bị từ chối</h3><p>Xem log server để biết source line. Snapshot cũ vẫn được giữ nếu config mới có lỗi.</p><h3>Preview có nhưng item thật không có</h3><p>Đó thường là placeholder phụ thuộc viewer. Lore persistent chỉ nhận output viewer-independent.</p></section>
-      <footer>CustomMoreLore · MMOItems lore layout engine · Tài liệu cấu hình và vận hành</footer>
+      <section id="troubleshooting"><h2>7. Troubleshooting</h2><h3>Stats do not appear</h3><p>Run <code>/cml debug item</code> and check the item type, ID, and stat spelling. Use <code>render: fragment</code> when you want MMOItems formatting.</p><h3>Separators remain visible</h3><p>Replace the plain string with a <code>row</code> or <code>columns</code> entry and set <code>absent: remove</code>.</p><h3>Reload is rejected</h3><p>Check the server log for the source line. The previous snapshot remains active when the new configuration is invalid.</p><h3>Preview works but the item does not change</h3><p>The layout probably contains a viewer-dependent placeholder. Persistent lore only accepts viewer-independent output.</p></section>
+      <footer>CustomMoreLore · MMOItems lore layout engine · Configuration and operations guide</footer>
     </main>
   </div>
   <script>const links=[...document.querySelectorAll('nav a')];const sections=links.map(a=>document.querySelector(a.getAttribute('href')));const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}}),{rootMargin:'-25% 0px -65%'});sections.forEach(s=>s&&io.observe(s));</script>
